@@ -1,0 +1,120 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(105, 179, 248);
+    margin: 0;
+    font-family: Optima;
+    /* opacity: 1 !important; */
+}
+
+h1 {
+    font-size: 40px;
+    font-weight: 100;
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+
+h1.bigger {
+    font-size: 100px;
+}
+
+h1.smaller {
+    font-size: 30px;
+}
+
+h2 {
+    font-size: 20px;
+    width: fit-content;
+    margin: 20px auto;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+h2.quote {
+    background: #ffffff;
+}
+
+p {
+    margin: 0;
+    font-size: 20px;
+}
+
+.screen {
+    display: none;
+    position: absolute;
+    text-align: center;
+    opacity: 0;
+    transition: 1s all;
+}
+
+.screen.visible {
+    display: block;
+    opacity: 1;
+}
+
+.q {
+    transition: .2s all;
+    opacity: 0;
+    display: none;
+}
+
+input {
+    border: none;
+    margin-right: 10px;
+}
+
+input.small {
+    /* margin-right: 3.5ex; */
+    margin-right: 2px;
+    width: 3ex;
+}
+span{
+    margin-right: 5px;
+}
+/* input.small:after{
+    content: "min";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: translate(100%,0);
+} */
+button,
+input {
+    background-color: white;
+    height: 1.5em;
+    border-radius: 5px;
+    padding: 5px 10px;
+    height: 1.5em;
+    box-sizing: content-box;
+    outline: none;
+}
+
+.choice {
+    margin: 0 10px;
+    font-weight: bold;
+    transition: .3s all;
+    font-size: 40px;
+}
+
+.choice:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+#yes {
+    color: green;
+}
+
+#no {
+    color: red;
+}
+
+#decision-container {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}

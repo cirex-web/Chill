@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Chill</title>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="/external/jquery.js"></script>
+    <script src="script.js" type="module"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=KoHo&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@400&display=swap" rel="stylesheet">
+    <!-- End of Google Fonts Import-->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <div class="titleBox">
+        <img src="/assets/chillLogo2.png">
+    </div>
+
+    <div class="notice"></div>
+
+    <!-- Default Page -->
+    <div class="mainContent" id="defaultPage">
+        <div style="width:100%">
+            <button type="button" class="blockButton" id="blockButton">Block this site</button>
+        </div>
+
+        <div class="tab">
+            <button type="button" class="tablinks" id="openblocked">Blocked Sites</button>
+            <button type="button" class="tablinks" id="openFAQ">FAQ</button>
+        </div>
+        <div id="blocked" class="tabcontent">
+            <!-- TODO: Display "No blocked sites" if no sites are blocked -->
+            <h3>Blocked Sites:</h3>
+            <div class="blocked_site_list"></div>
+        </div>
+
+        <div id="FAQ" class="tabcontent">
+            <h3>What is the purpose of this extension?</h3>
+            <p>This extension is meant to be used to help with self control and increase productivity. It can also be used to block certain pop-up websites/ads.            </p>
+            <h3>How can I block a site?</h3>
+            <p>First, click on the “Block this site” button above. The button will lead you to a block settings page where you can block a website with a different URL than the one you’re currently on. If you don’t add any text to the input field, the extension will block the current webpage.
+            </p>
+            <h3>How can I temporarily unblock a site?</h3>
+            <p>When you go to a blocked site, the webpage will be replaced with the default blocked site page. From there, you can request access to the site from your future self by entering the reason you want to access the site and how long you should wait until making the decision to unblock the site.
+            </p>
+            <h3>How can I permanently unblock a site?</h3>
+            <p>You can’t permanently unblock a site that you block.
+            </p>
+        </div>
+
+        <!-- Kinda useless rn
+      <div style="width:100%">
+        <button type="button" id="unblockButton">Unblock permanently blocked sites<p>(24hr cooldown)</p></button>
+      </div>
+        -->
+    </div>
+
+    <!-- Block Page -->
+
+    <div class="mainContent" id="blockPage">
+        <div class="blockedTab">
+            <h3>Block Settings</h3>
+            <!--
+          <p>How long do you want to block this <br>site for?</p> 
+          <select name="How long do you want to be blocked for?" id="time">
+              <option value="fifteen">15 min</option>
+              <option value="thirty">30 min</option>
+              <option value="hour">1 hour</option>
+              <option value="forever">Forever</option>
+              <option> Custom
+                <p>
+                  <input type="number" id="minutes" name="minutes" min="0" placeholder="0"> minutes  </input>
+                </p> 
+              </option>
+          </select>
+        -->
+            <!-- Optional input field -->
+            <p><b>OPTIONAL:</b> Block a site with a different URL</p>
+            <input placeholder="https://www.example.com" id="inputField">
+        </div>
+        <div class="message_pane"></div>
+        <div style="width:100%">
+            <button type="button" class="blockButton" id="blockSite">Block this site</button>
+        </div>
+
+        <div style="width:100%">
+            <button type="button" class="goBackButton" id="goBackButton">Go back</button>
+        </div>
+    </div>
+
+    <!-- Unblock Page -->
+    <!--
+    <div class="mainContent" id="unblockPage">
+
+        <div class="blockedTab">
+            <h3>Blocked Sites:</h3>
+            <div class="blocked_site_list"></div>
+        </div>
+
+
+      <div style="width:100%">
+        <button button type="button" class="goBackButton" id="goBackButton2">Go back</button>
+      </div>
+    </div>
+    -->
+
+</body>
+
+</html>
