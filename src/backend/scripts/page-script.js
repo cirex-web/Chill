@@ -1,7 +1,7 @@
 let blocked_sites, site, url;
 getBlockedSites().then((res) => {
     blocked_sites = res;
-    url = new URL(location.href).hostname;
+    url = new URL(location.href).hostname.replace("www.","");
     site = blocked_sites[url];
     main();
 });
@@ -12,11 +12,19 @@ function main() {
     addStorageListener();
     if (siteBlocked()) {
         console.log("blocking...");
+        
         let style = document.documentElement.appendChild(document.createElement('style'));
         style.textContent = '* {display:none}';
-        $(function() {
-            beginBlock(style);
-        });
+        window.stop();
+        beginBlock(style);
+        // if(document.readyState === "interactive"){
+        // }else{
+        //     // window.stop();
+        //     document.addEventListener("DOMContentLoaded", function() {
+        //         beginBlock(style);
+        //     });
+        // }
+
 
     }
 }
@@ -62,26 +70,31 @@ function siteBlocked() {
     if (!site || (site && !site.currently_blocked && site.reblock > +new Date())) {
         return false;
     } else {
-        sendMessage("block_site", { URL: url });
+        if(site.reblock <= +new Date()){
+            sendMessage("block_site", { URL: url });
+        }
         return true;
     }
 
 }
 
 function beginBlock(style) {
-    document.body.innerHTML = "";
-    document.head.innerHTML = "";
+    console.log("beginning");
+    const blockPageTemplate = '<html><head><title>Chilled!</title></head><body style="display:none !important;"></body></html>';
+    document.documentElement.innerHTML = blockPageTemplate; 
+    
     $("body").load(chrome.runtime.getURL("/src/backend/html/blocked.html"), async() => {
-        await wait(100);
-        style.remove();
         // Doesn't load input field but here's the css import
-
+        
         var cssURL = chrome.runtime.getURL("/src/backend/html/styles.css");
         var newstyle = document.createElement("link"); // Create a new link Tag
         // Set some attributes:
         newstyle.setAttribute("rel", "stylesheet");
         newstyle.setAttribute("type", "text/css");
         newstyle.setAttribute("href", cssURL);
+        newstyle.onload = ()=>{
+            $("body").css("display","flex");
+        }
         document.getElementsByTagName("body")[0].appendChild(newstyle);
 
         if (site.request) {

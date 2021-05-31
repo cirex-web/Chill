@@ -38,7 +38,7 @@ let Storage = function () {
         currentSiteBlocked = function () {
             return new Promise(async (re) => {
                 let url = await getURL();
-                console.log(url);
+                
                 let site_data_exists = !!(blocked_sites[url]);
                 re(site_data_exists&&blocked_sites[url].currently_blocked);
                 
@@ -48,7 +48,7 @@ let Storage = function () {
             return new Promise((re) => {
                 chrome.windows.getCurrent(w => {
                     chrome.tabs.query({ active: true, windowId: w.id }, tabs => {
-                        let url = new URL(tabs[0].url).hostname;
+                        let url = new URL(tabs[0].url).hostname.replace("www.","");
                         re(url);
                     });
                 });
