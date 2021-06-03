@@ -1,6 +1,18 @@
+:root {
+    --blue-color-4: #75aedc;
+    --blue-color-3: #94c6e3;
+    --blue-color-2: #9ed8f0;
+    --blue-color-1: #EFFBFF;
+    --blue-color-5: #009DF8;
+    --blue-color-7: #75AEDC;
+    --green-color-1: #008A5B;
+    --green-color-2: #5DECBA;
+  }
+  
+
 body {
     width: 300px;
-    background-color: #f2f2f2;
+    background-color: var(--blue-color-1);
 }
 
 .blocked_site_list {
@@ -39,12 +51,15 @@ body {
     background-color: #ffffff;
     border-radius: 7px 7px 0px 0px;
     margin-top: 15px;
+    display: flex;
+    align-content: center;
+    align-items: center;
 }
 
 .blockedTab {
     overflow: hidden;
     border: 1px solid #ccc;
-    background-color: #ffffff;
+    background-color: transparent;
     border-radius: 7px 7px 0px 0px;
     padding-bottom: 10px;
     text-align: center;
@@ -74,7 +89,6 @@ body {
 
 .tab button {
     background-color: inherit;
-    float: left;
     border: none;
     outline: none;
     cursor: pointer;
@@ -82,6 +96,7 @@ body {
     font-family: 'KoHo', sans-serif;
     transition: 0.3s;
     font-size: 17px;
+    flex-grow: 1;
 }
 
 
@@ -144,7 +159,7 @@ body {
     margin: 0 auto;
     border: none;
     margin-top: 10px;
-    background-color: #f5372a;
+    background-color: var(--blue-color-5);
     font-size: 25px;
     width: 80%;
     padding: 13px 0;
@@ -155,7 +170,7 @@ body {
 /* Change background color of buttons on hover */
 
 .blockButton:hover {
-    background-color: #d63125;
+    background-color: var(--blue-color-7);
     cursor: pointer;
 }
 
@@ -191,27 +206,28 @@ body {
 .goBackButton {
     display: block;
     border-radius: 5px;
-    color: white;
     margin: 0 auto;
     border: none;
     margin-top: 10px;
-    background-color: #1480e6;
+    background-color: transparent;
     font-size: 18px;
     font-family: 'Teko', sans-serif;
     width: 70%;
     padding: 10px 0;
+    color: black;
 }
 
 .goBackButton:hover {
-    background-color: #126ec4;
+    /* background-color: #126ec4; */
+    cursor: pointer;
 }
 
 .blockedColor {
-    color: rgb(214, 12, 12);
+    color: var(--blue-color-4);
 }
 
 .unblockedColor {
-    color: rgb(23, 226, 40);
+    color: var(--green-color-1);
 }
 
 .notice {
@@ -229,4 +245,19 @@ body {
 
 .message_pane:empty {
     display: none;
+}
+td.true{
+    color: var(--blue-color-4);
+}
+td.false{
+    color: var(--blue-color-2);
+}
+td.bold{
+    font-weight: bold;
+}
+table{
+    width: 100%;
+}
+table th{
+    text-align: left;
 }

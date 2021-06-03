@@ -32,20 +32,26 @@
     <!-- Default Page -->
     <div class="mainContent" id="defaultPage">
         <div style="width:100%">
-            <button type="button" class="blockButton" id="blockButton">Block this site</button>
+            <button type="button" class="blockButton" id="blockButton">Block a site</button>
         </div>
 
         <div class="tab">
             <button type="button" class="tablinks" id="openblocked">Blocked Sites</button>
-            <button type="button" class="tablinks" id="openFAQ">FAQ</button>
+            <button type="button" class="tablinks" id="openstats">Stats</button>
+
+            <!-- <button type="button" class="tablinks" id="openFAQ">FAQ</button> -->
         </div>
         <div id="blocked" class="tabcontent">
             <!-- TODO: Display "No blocked sites" if no sites are blocked -->
-            <h3>Blocked Sites:</h3>
-            <div class="blocked_site_list"></div>
+            <table class="blocked_site_list">
+                <tr>
+                    <th>Blocked Site</th>
+                    <th>Status</th>
+                </tr>
+            </table>
         </div>
-
-        <div id="FAQ" class="tabcontent">
+        <div id="stats" class="tabcontent">Coming in version 2.0!</div>
+        <!-- <div id="FAQ" class="tabcontent">
             <h3>What is the purpose of this extension?</h3>
             <p>This extension is meant to be used to help with self control and increase productivity. It can also be used to block certain pop-up websites/ads.            </p>
             <h3>How can I block a site?</h3>
@@ -57,7 +63,7 @@
             <h3>How can I permanently unblock a site?</h3>
             <p>You can’t permanently unblock a site that you block.
             </p>
-        </div>
+        </div> -->
 
         <!-- Kinda useless rn
       <div style="width:100%">
@@ -87,7 +93,7 @@
         -->
             <!-- Optional input field -->
             <p><b>OPTIONAL:</b> Block a site with a different URL</p>
-            <input placeholder="https://www.example.com" id="inputField">
+            <input placeholder="example.com" id="inputField">
         </div>
         <div class="message_pane"></div>
         <div style="width:100%">

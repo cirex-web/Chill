@@ -16,23 +16,31 @@ function displayInfo() {
 }
 async function showCurTabData() {
     if (await Storage.currentSiteBlocked()) {
-
-        $(".notice").html(`The current site is <span class="blockedColor">blocked<span>`);
-        $(".blockButton").hide();
+        $(".notice").html(`The current site is <span class="blockedColor">chilled<span>`);
     } else {
         $(".notice").html('The current site is <span class="unblockedColor">unblocked<span>');
-        $(".blockButton").show();
     }
 
 }
 
 function displayBlockedSites(blocked_sites) {
-    console.log(blocked_sites);
-    let str = "";
+    $(".blocked_site_list tr:not(:first)").remove();
     for (let [url, data] of Object.entries(blocked_sites)) {
-        str += url + "<br>";
+        let element = document.createElement("tr");
+        let classList = data.currently_blocked;
+        let status = data.currently_blocked?"Chilled":"Unblocked";
+        if(data.request){
+            if(data.request.end_time<+new Date()){
+                status="Thawed";
+                classList+=" bold";
+            }else{
+                status = "Thawing";
+            }
+        }
+        element.innerHTML = (`<td>${url}</td><td class="${classList} ">${status}</td>
+    </tr>`);
+        $(".blocked_site_list").append(element);
     }
-    $(".blocked_site_list").html(str);
     showCurTabData();
 }
 
@@ -45,7 +53,7 @@ function setUpInteractivity() {
         Storage.blockSite(url);
     });
 
-    $("#openFAQ").on('click', function() { openTab('FAQ') });
+    $("#openstats").on('click', function() { openTab('stats') });
     $("#openblocked").on('click', function() { openTab('blocked') });
     $("#blockButton").on('click', function() { openContent('blockPage') });
     // document.getElementById("unblockButton").onclick = function() {openContent('unblockPage')};
@@ -54,7 +62,7 @@ function setUpInteractivity() {
 
     // Default content and tab pages :D
     openContent("defaultPage");
-    $("#openblocked").click();
+    $("#openblocked").trigger("click");
 }
 
 

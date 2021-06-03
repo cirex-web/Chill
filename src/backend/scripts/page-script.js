@@ -88,7 +88,6 @@ function beginBlock(style) {
         
         var cssURL = chrome.runtime.getURL("/src/backend/html/styles.css");
         var newstyle = document.createElement("link"); // Create a new link Tag
-        // Set some attributes:
         newstyle.setAttribute("rel", "stylesheet");
         newstyle.setAttribute("type", "text/css");
         newstyle.setAttribute("href", cssURL);
@@ -137,8 +136,8 @@ function setUpForm() {
         if (message != "") {
             $("#q1").css("opacity", 0);
             setTimeout(() => {
-                $("#q1").hide();
                 showId("q2");
+                $("#q1").hide();
             }, 200);
 
         }
@@ -170,10 +169,8 @@ function setUpForm() {
 }
 
 function showId(id) {
-    setTimeout(()=>{
+    $("#" + id).css("display","block");
 
-        $("#" + id).css("display","block");
-    },5);
     setTimeout(() => {
 
         $("#" + id).css("opacity", 1);
